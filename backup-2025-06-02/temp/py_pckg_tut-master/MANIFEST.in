@@ -1,0 +1,2 @@
+recursive-include package *
+include example_package/logger/logger_config.yaml
