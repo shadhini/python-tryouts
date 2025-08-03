@@ -19,3 +19,10 @@
 ## Automation with Python
 
 * [Automation](automation-with-python/automation.md)
+
+## OOP
+
+* [Methods](oop/methods.md)
+* [Classes](oop/classes/README.md)
+  * [Dunder Methods](oop/classes/dunder-methods.md)
+* [Variables](oop/variables.md)
