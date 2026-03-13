@@ -26,3 +26,7 @@
 * [Classes](oop/classes/README.md)
   * [Dunder Methods](oop/classes/dunder-methods.md)
 * [Variables](oop/variables.md)
+
+## Dependency Management
+
+* [Virtualenv vs  Pipenv](dependency-management/virtualenv-vs-pipenv.md)
