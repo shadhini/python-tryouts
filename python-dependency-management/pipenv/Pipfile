@@ -1,0 +1,25 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages] # Production dependencies; Your app literally cannot run without these
+# Core Data Processing
+pandas = "*"
+numpy = "<2.0.0"  # Pinning slightly to ensure compatibility with older DSS wrappers
+
+# Database Connectivity
+pymysql = "*"
+cryptography = "*"
+
+
+[dev-packages] # Development tools; You need them to write, test, and format code, but they aren't part of the final product
+# Quality & Testing Tools
+pytest = "*"
+black = "*"      # Formatter
+flake8 = "*"     # Linter
+pytest-cov = "*" # Coverage reports
+ipykernel = "*"  # To test logic in Jupyter Notebooks
+
+[requires]
+python_version = "3.9"
