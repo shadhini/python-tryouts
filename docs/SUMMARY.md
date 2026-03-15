@@ -5,6 +5,7 @@
   * [Python in Action](python/python-in-action.md)
   * [Python Trends 2025](python/python-trends-2025.md)
 * [Python Library Ecosystem](python-library-ecosystem.md)
+* [Different Kinds of Python Frameworks and Implementations](different-kinds-of-python-frameworks-and-implementations.md)
 
 ## Architecture
 
