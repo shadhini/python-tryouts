@@ -51,3 +51,40 @@ runner.execute()
 
 MIT License
 
+# Logging
+
+By default, this library uses a `NullHandler` and produces no output.
+
+## Enable Logging
+
+### Option 1: Use the convenience function
+```python
+import logging
+import abc_library
+
+abc_library.setup_logging(logging.DEBUG)
+```
+
+### Option 2: Configure manually
+```python
+import logging
+
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+
+# Now abc_library logs will appear
+import abc_library
+```
+
+### Option 3: Configure specific library logger
+```python
+import logging
+
+logger = logging.getLogger('abc_library')
+logger.setLevel(logging.DEBUG)
+handler = logging.StreamHandler()
+handler.setFormatter(logging.Formatter('%(levelname)s: %(message)s'))
+logger.addHandler(handler)
+```

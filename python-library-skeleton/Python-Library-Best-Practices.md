@@ -57,3 +57,33 @@ Usually, this involves a `.pre-commit-config.yaml` file to automate:
 * **Formatting:** Black.
 * **Type Checking:** Mypy.
 
+## Logging
+
+### Performance Considerations
+
+Use lazy formatting for performance:
+
+```python name=your_library/performance.py
+import logging
+
+logger = logging.getLogger(__name__)
+
+# ✅ GOOD - String formatting only happens if message is logged
+logger.debug("Processing item %s with data %s", item_id, data)
+
+# ❌ BAD - String formatting happens even if debug is disabled
+logger.debug(f"Processing item {item_id} with data {data}")
+```
+
+### Key Principles
+
+1. ✅ **DO**: Add `NullHandler` to your library's root logger
+2. ✅ **DO**: Use `logging.getLogger(__name__)` in each module -- per module logger
+3. ✅ **DO**: Use lazy formatting (`%s`, `%d`) instead of f-strings
+4. ✅ **DO**: Let users configure logging in their application -- use a `NullHandler`
+5. ✅ **DO**: Document your logging behavior and provide an example app config in the `README`
+5. ❌ **DON'T**: Call `logging.basicConfig()` in library code -- libraries should never configure logging handlers by default
+6. ❌ **DON'T**: Add any handlers except `NullHandler`
+7. ❌ **DON'T**: Set logging levels in library code
+8. ❌ **DON'T**: Configure logging output format
+
