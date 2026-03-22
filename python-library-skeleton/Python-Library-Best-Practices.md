@@ -61,7 +61,7 @@ Usually, this involves a `.pre-commit-config.yaml` file to automate:
 
 ### Performance Considerations
 
-Use lazy formatting for performance:
+#### Use lazy formatting for performance:
 
 ```python name=your_library/performance.py
 import logging
@@ -75,6 +75,23 @@ logger.debug("Processing item %s with data %s", item_id, data)
 logger.debug(f"Processing item {item_id} with data {data}")
 ```
 
+#### Check log level only for expensive computations:
+Python's `logging` checks the level before formatting, and using the `%s`-style arguments defers formatting until needed.
+So no need to check `logger.isEnabledFor(logging.DEBUG)` for simple log statements.
+
+Use `logger.isEnabledFor(logging.DEBUG)` only when preparing the log arguments is expensive:
+
+```python
+python
+# cheap / lazy formatting (good)
+logger.debug("Directory created: %s", dir_path)
+
+# expensive computation (guard with check)
+if logger.isEnabledFor(logging.DEBUG):
+    details = expensive_computation()
+    logger.debug("Details: %s", details)
+```
+
 ### Key Principles
 
 1. ✅ **DO**: Add `NullHandler` to your library's root logger
@@ -82,8 +99,7 @@ logger.debug(f"Processing item {item_id} with data {data}")
 3. ✅ **DO**: Use lazy formatting (`%s`, `%d`) instead of f-strings
 4. ✅ **DO**: Let users configure logging in their application -- use a `NullHandler`
 5. ✅ **DO**: Document your logging behavior and provide an example app config in the `README`
-5. ❌ **DON'T**: Call `logging.basicConfig()` in library code -- libraries should never configure logging handlers by default
-6. ❌ **DON'T**: Add any handlers except `NullHandler`
-7. ❌ **DON'T**: Set logging levels in library code
-8. ❌ **DON'T**: Configure logging output format
-
+6. ❌ **DON'T**: Call `logging.basicConfig()` in library code -- libraries should never configure logging handlers by default
+7. ❌ **DON'T**: Add any handlers except `NullHandler`
+8. ❌ **DON'T**: Set logging levels in library code
+9. ❌ **DON'T**: Configure logging output format
