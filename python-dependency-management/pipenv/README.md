@@ -2,15 +2,18 @@
 
 ## 1. Installation and Setup
 
-install Pipenv globally on your system 
-
+install Pipenv globally on your system
 ```bash
 pip install pipenv
 
 ```
 
-To initialize a project, navigate to your project folder and specify which version of Python you'd like to use:
+tell Pipenv to create virtual environments inside your project folder (instead of a hidden global folder) 
+```bash
+export PIPENV_VENV_IN_PROJECT=1
+```
 
+To initialize a project, navigate to your project folder and specify which version of Python you'd like to use:
 ```bash
 pipenv --python 3.14
 

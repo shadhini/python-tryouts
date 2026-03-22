@@ -33,4 +33,14 @@ spawn a shell within the virtual environment:
 
     pipenv shell
 
+lock your current environment: create/update Pipfile.lock
 
+    pipenv lock
+
+generate a production requirements.txt 
+
+    pipenv requirements > requirements.txt
+
+to include dev dependencies in the requirements.txt
+
+    pipenv requirements --dev > requirements-dev.txt

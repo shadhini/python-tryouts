@@ -5,8 +5,6 @@ from .package_a.core import A1, A2
 from .package_b.utils import utility_function_a, utility_function_b
 import logging
 
-__all__ = ['A1', 'A2', 'utility_function_a', 'utility_function_b']
-
 # Setting up logging for the library
 
 # Create a logger for your library
@@ -40,3 +38,5 @@ def setup_logging(level=logging.WARNING):
 __version__ = "1.0.0"
 __author__ = "Shadhini Jayatilake"
 __email__ = "shadhini.jayatilake@gmail.com"
+
+__all__ = ['A1', 'A2', 'utility_function_a', 'utility_function_b']
