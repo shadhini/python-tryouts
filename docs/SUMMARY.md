@@ -31,3 +31,7 @@
 ## Dependency Management
 
 * [Virtualenv vs  Pipenv](dependency-management/virtualenv-vs-pipenv.md)
+
+***
+
+* [Python Annotations](python-annotations.md)
